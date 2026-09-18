@@ -1,0 +1,31 @@
+name: ios-simulator-build
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+jobs:
+  simulator:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generate native project and install pods
+        run: npx expo prebuild --platform ios
+      - name: Build for the iOS Simulator (no signing)
+        run: |
+          xcodebuild -workspace ios/Hexward.xcworkspace -scheme Hexward -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build | xcpretty || true
+          test -d build/Build/Products/Release-iphonesimulator/Hexward.app
+      - name: Zip the .app
+        run: cd build/Build/Products/Release-iphonesimulator && zip -r "$GITHUB_WORKSPACE/Hexward-simulator-${GITHUB_SHA::7}.zip" Hexward.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hexward-ios-simulator
+          path: Hexward-simulator-*.zip
+          retention-days: 14
