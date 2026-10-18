@@ -28,12 +28,14 @@ export default function About() {
           <Text v="title" center style={{ marginTop: space.sm }}>Hexward</Text>
           <Text v="callout" tone="text2" center num>Version {APP_VERSION} (1)</Text>
           <Text v="callout" tone="text2" center>Hexward Labs</Text>
-          <Text tone="text2" center style={{ marginTop: space.sm, maxWidth: 300 }}>Self-hosted security tools.</Text>
+          <Text tone="text2" center style={{ marginTop: space.sm, maxWidth: 300 }}>Self-hosted security tools, with optional local AI Assist.</Text>
         </View>
 
         <Card padded={false} style={{ paddingHorizontal: space.md }}>
           <ListRow title="Website" subtitle="hexwardlabs.com" left={<Icon name="globe" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.web, 'Website')} />
           <ListRow title="GitHub" subtitle="Source and releases" left={<Icon name="github" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.github, 'GitHub')} />
+          <ListRow title="AI Assist" subtitle="Optional local model, on GitHub" left={<Icon name="nibble" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.aiAssist, 'AI Assist')} />
+          <ListRow title="Facebook" subtitle="Hexward Labs" left={<Icon name="globe" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.facebook, 'Facebook')} />
           <ListRow title="Privacy statement" left={<Icon name="shield" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.privacy, 'Privacy statement')} />
           <ListRow title="Open-source notices" left={<Icon name="book" color={p.text2} />} right={<Icon name="external" size={18} color={p.text3} />} chevron={false} onPress={() => openExternal(LINKS.notices, 'Open-source notices')} />
           <ListRow title="Contact" subtitle="hello@hexwardlabs.com" left={<Icon name="mail" color={p.text2} />} chevron={false} last onPress={() => { void contact(); }} />
