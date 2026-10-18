@@ -10,7 +10,7 @@ import { TopBar } from '@/components/Chrome';
 import { CheckRow, FeatureTable, FollowButton, MockScreen, isBundle } from '@/components/Products';
 import { useApp } from '@/state/AppState';
 import { useToast } from '@/state/Toast';
-import { STORE_SAFE_PRICING } from '@/config';
+import { LINKS, STORE_SAFE_PRICING } from '@/config';
 import { campaigns, productBySlug, tutorials, videos } from '@/data/sample';
 
 /**
@@ -98,6 +98,14 @@ export default function ProductDetail() {
 
         <SectionHeader title="What it does" />
         <Text tone="text2">{product.what}</Text>
+
+        <SectionHeader title="AI Explain" />
+        <Card>
+          <Text tone="text2">Hexward tools can explain a finding in plain language through the optional AI Assist, a small model that runs on your own hardware. The tool's own engine still finds and scores every finding.</Text>
+          <View style={{ marginTop: 10, alignSelf: 'flex-start' }}>
+            <Button small kind="secondary" title="AI Assist on GitHub" icon="github" onPress={() => openExternal(LINKS.aiAssist, 'AI Assist')} />
+          </View>
+        </Card>
 
         <SectionHeader title="Who it's for" />
         <Card padded={false} style={{ paddingHorizontal: space.md }}>
