@@ -84,6 +84,14 @@ export default function FindingDetail() {
               ))}
             </Card>
 
+            <SectionHeader title="AI Explain" />
+            <Card padded={false} style={{ paddingHorizontal: space.md }}>
+              <ListRow title="Explain in your dashboard" subtitle="Optional. Needs AI Assist enabled on your instance" last
+                left={<Icon name="nibble" color={p.accent} />}
+                right={<Icon name="external" size={18} color={p.text3} />} chevron={false}
+                onPress={() => openExternal(dashboardUrl, 'Dashboard')} />
+            </Card>
+
             {tutorial ? (
               <>
                 <SectionHeader title="Learn more" />
